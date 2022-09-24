@@ -1,0 +1,172 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /*background-color: white; */
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(236, 222, 203);
+}
+
+#main{
+
+}
+
+#header{
+    height: 80px;
+    background-color: rgb(163, 103, 19);
+    position: fixed;
+    top : 0;
+    left: 0;
+    right: 0;
+}
+
+#header .logo {
+    float: left;
+    height: 80px;
+    width: 80px;
+    margin-left: 300px;
+}
+
+#header ul li{
+    display: inline;
+    
+}
+
+#header ul a{
+    float: right;
+    padding: 0 15px;
+    line-height: 80px;
+    font-size: 23px;
+    text-decoration: none;
+    color: white;
+}
+
+#header .upload_new {
+    float: right;   
+    padding: 0 40px;
+    line-height: 80px;
+    font-size: 23px;
+    text-decoration: none;
+    color: white;
+    margin-right: 12%;
+    background-color: rgb(119, 76, 16);
+}
+
+#body {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#body .picture-holder {
+    display: inline;
+}
+
+#body .picture-holder img{
+    
+    object-fit: cover;
+    height: 550px;
+    width: 600px;
+    margin-left: 12%;
+    margin-top: 5%;
+    border-radius: 5%;
+}
+
+#body .box {
+    display: inline;
+    margin-top: 5%;
+    margin-right: 12%;
+    float : right;
+    height: 550px;
+    width: 600px;
+    background-color: rgb(141, 90, 19);
+    border-radius: 5%;
+    color: rgb(235, 241, 250);
+}
+
+#body .box h1 {
+    padding: 20px 10%;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+#body .box p {
+    padding: 10px 10%;
+    font-size: 28px;
+}
+
+#body .box ul {
+    padding-left: 40px;
+    padding-top: 20px;
+    list-style-type: circle;
+    font-size: 20px;
+}
+
+#body .box ul li {
+    padding: 10px 0;
+}
+
+#body .box a {
+    margin-top: 10px;
+    margin-right: 25px;
+    padding: 15px;
+    float: right;
+    font-size: 30px;
+    color: rgb(59, 38, 8);
+    background-color: rgb(221, 159, 71);
+    text-decoration: none;
+    border-radius: 15px;
+}
+
+#footer {
+    height: 80px;
+    background-color: rgb(163, 103, 19);
+    position: fixed;
+    bottom : 0;
+    left: 0;
+    right: 0;
+    color: white;
+    
+}
+
+#footer .info {
+    float: left;
+}
+
+#footer .info ul {
+    padding-left: 200px;
+    list-style-type: none;
+}
+
+#footer .info ul li {
+    
+    font-size: 13px;
+}
+
+#footer .info .about-us {
+    font-size: 25px;
+    margin-left: -20px;
+    text-decoration: underline;
+}
+
+#footer .contact ul{
+    display: inline;
+    float: right;
+    padding-right: 200px;
+    padding-top: 10px;
+    list-style-type: none;
+}
+
+#footer .contact ul li {
+    font-size: 13px;
+}
+
+#footer .contact .contact-us {
+    font-size: 25px;
+    margin-left: -20px;
+    text-decoration: underline;
+}
+
