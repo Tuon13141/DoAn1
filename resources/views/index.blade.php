@@ -5,27 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/assets/css/index_style.css">
+    <link rel="stylesheet" href="/assets/css/headerAndFooter.css">
     <title>Homepage</title>
 </head>
 <body>
     <div id="header">
         <img class="logo" src="./assets/img/logo1.jpg" alt="">
+        <div class="user-account">
+            <div class="ava {{ session()->has('role') ? '' : 'close' }}">
+                <a href="{{ route('myPage') }}">Tôi</a>            
+            </div>
+        </div>
         <a class="upload_new" href="/">Đăng tin</a>
         <ul>
             <li>
-                <a href="{{ route('login') }}">Đăng nhập</a>
+                <a href="{{ route('login') }}" class="{{ session()->has('role') ? 'close' : '' }}">Đăng nhập</a>
             </li>
             <li>
                 <a href="/">Hỏi đáp</a>
             </li>
             <li>
-                <a href="{{  route('page1') }}">Thuê trọ</a>
+                <a href="{{ route('page1') }}">Thuê trọ</a>
             </li>
             <li>
                 <a href="{{ route('index') }}">Trang chủ</a>
             </li>
         </ul>
-        
+
     </div>
 
     <div id="body">
@@ -64,6 +70,5 @@
             </ul>
         </div>
     </div>
-
 </body>
 </html>

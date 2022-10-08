@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/assets/css/buyPage_1_style.css">
+    <link rel="stylesheet" href="/assets/css/myPage_style.css">
     <link rel="stylesheet" href="/assets/css/headerAndFooter.css">
-    <title>Thuê Nhà Trọ Xịn</title>
+    <title>My Page</title>
 </head>
 <body>
     <div id="header">
         <img class="logo" src="./assets/img/logo1.jpg" alt="">
         <div class="user-account">
             <div class="ava {{ session()->has('role') ? '' : 'close' }}">
-                <a href="{{ route('myPage') }}">Tôi</a>            
+                <a href="{{ route('myPage') }}">Tôi</a>                  
             </div>
         </div>
         <a class="upload_new" href="/">Đăng tin</a>
@@ -34,36 +34,46 @@
 
     </div>
 
-
     <div id="body">
-        <div class="container1">
-            <p style="font-size: 30px; color: rgb(51, 51, 51); padding-left: 470px; padding-bottom: 30px; font-weight: 600;">Gợi ý cho bạn:</p>
-            <p id="preBtn1"><</p>
-            <p id="nextBtn1">></p> 
-            <div class="slider1">
-                <div class="box1" id="lastClone1">
-                    <img src="./assets/img/tro3.jpg" alt="">
+        <div class="box">
+            <div class="small-box-1">
+                <div class="circle">
+                    <img src="./assets/img/ava4.jpg" alt="">
                 </div>
-                <div class="box1">
-                    <img src="./assets/img/tro1.jpg" alt="">
-                </div>
-                <div class="box1">
-                    <img src="./assets/img/tro2.jpg" alt="">
-                </div>
-                <div class="box1">
-                    <img src="./assets/img/tro3.jpg" alt="">
-                </div>
-                <div class="box1" id="firstClone1">
-                    <img src="./assets/img/tro1.jpg" alt="">
+                <div class="content">
+                    Họ tên: {{ session('name') }}   <br>
+                    Tài khoản: {{ session('role') }}
                 </div>
                 
-            </div>   
-            <a style="width: 160px; height: 40px; line-height: 40px; color: white; text-align: center; font-size: 30px; 
-                    float: right; margin-top: 30px; background-color: rgb(119, 76, 16)">
-                Xem thêm
-            </a>    
+            </div>
+            <div class="small-box-2">
+                Số điện thoại: {{ session('phone_number') == '0' ? '' : session('phone_number') }} <br>
+                Email: {{ session('email') }} <br>
+                <a href="{{ route('aboutMe') }}" class="change">Chỉnh sửa</a>
+                <a href="{{ route('logout') }}" class="log-out">Đăng xuất</a>            
+            </div>
+            
         </div>
+        <div class="box">
+            <div class="small-box-3">
+                <div class="host {{ session('role') == 'host' ? '' : 'close' }}">
+                    <div class="host-content">
+                        <div class="title">
+                            Quản lí nhà trọ: <br> <br> <br>
+                                - Số nhà trọ đang quản lí: <br> <br>
+                                - Số nhà trọ đã được thuê: <br>
+                        </div>  
+                        <a href="{{ route('hostMotel') }}">Chi tiết</a>
+                    </div>
+                </div>
+                <div class="admin {{ session('role') == 'admin' ? '' : 'close' }}">
 
+                </div>
+                <div class="user {{ session('role') == 'role' ? '' : 'close' }}">
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="footer">
@@ -83,8 +93,5 @@
             </ul>
         </div>
     </div>
-
-
-    <script src="./assets/js/page1.js"></script>
 </body>
 </html>

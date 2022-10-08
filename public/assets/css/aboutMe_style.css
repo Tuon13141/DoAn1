@@ -1,0 +1,58 @@
+
+#body .big-box {
+    width: 60%;
+    height: 90%;
+    margin: 2.5% auto;
+}
+
+.holder {
+    background-color: rgb(153, 98, 22);
+    color: white;
+    margin: 10% 0;
+    font-size: 20px;
+    padding: 0 30px;
+    padding-bottom: 60px;
+}
+
+.holder .title {
+    padding-top: 2%;
+    font-size: 40px;
+    text-align: center;
+}
+
+#body .holder .label {
+    padding: 15px 0;
+    display: block;
+}
+
+#body .holder .input {
+    font-size: 20px;
+    width: 100%;
+    padding: 5px 5px;
+    border: 1.5px solid black;
+}
+
+#body .holder .button {
+    padding: 0 20px;
+    padding-top: 15px;
+    float: right;
+}
+
+#body .holder .button input{
+    border: 2px solid black;
+    width: 100px;
+    height: 30px;
+    font-size: 23px;
+    background-color: rgb(255, 255, 255);
+}
+
+.holder a {
+    margin-top: 15px;
+    padding: 0 3px;
+    float: left;
+    font-size: 23px;
+    line-height: 24px;
+    text-decoration: none;
+    background-color: white;
+    border: 2px solid black   ;
+}
