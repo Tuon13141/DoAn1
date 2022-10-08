@@ -32,7 +32,7 @@ class HostController extends Controller
     }
 
     public function processAboutMotel(Request $request, $id) {
-        $motels = DB::table('motel')->where('host_username', session('username'))->where('id', $id)->get();
+        $motels = DB::table('motel')->where('host_username', session('username'))->where('id', $id)->first();
         return view('aboutMotel', ['motels' => $motels]);
     }
 }
