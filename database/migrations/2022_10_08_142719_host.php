@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('motel', function (Blueprint $table) {
+        Schema::create('host', function (Blueprint $table) {
             $table->id()->unique()->autoIncrement();
             $table->string('username', 10);
             $table->string('password', 255);

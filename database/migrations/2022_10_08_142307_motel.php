@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('address');
             $table->text('describe');
             $table->string('status', 20);
-            $table->int('number_of_rumber');
+            $table->integer('number_of_rumber');
         });
     }
 
