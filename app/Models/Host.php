@@ -46,4 +46,6 @@ class Host extends Authenticatable
     public $timestamps = false;
 
     protected $table = 'host';
+
+    protected $guard = 'host';
 }

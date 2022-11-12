@@ -18,6 +18,7 @@ class AuthController extends Controller
             if (Auth::guard($role)->attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {
                 $request->session()->put('username', Auth::guard($role)->user()->username);
                 $request->session()->put('role', $role);
+                
                 $name = DB::table($role)->where('username', $request->input('username'))->value('name');
                 $request->session()->put('name', $name);
                 $email = DB::table($role)->where('username', $request->input('username'))->value('email');
@@ -28,9 +29,10 @@ class AuthController extends Controller
                 $hadAva =  DB::table($role)->where('username', $request->input('username'))->value('hadAva');
                 $request->session()->put('hadAva', $hadAva);
                 return redirect()->route('index'); 
+
             }
         }
-        return back();
+        return redirect()->route('index');
     }
 
     public function processRegister(Request $request){
