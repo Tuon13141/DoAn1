@@ -1,0 +1,125 @@
+#body
+ {
+       
+     padding-top: 80px;
+     padding-bottom: 80px;
+     height: 100vh;
+ }
+#body .box1{
+    padding-top: 3%;
+    text-align: center;
+    padding-bottom: 4%;
+    width: 100%;
+    
+}
+#body .box1 h3{
+    font-size: 200%;
+    margin-bottom:0.5%;
+    color: rgb(120, 84, 46);
+
+}
+#body .box1 input{
+    width: 50%;
+    line-height: 200%;
+    font-size: 150%;
+    border-radius: 10px;
+    border:1px;
+    background-color: rgb(243, 206, 166);
+    padding-left: 3%;
+    padding-right: 3%;
+}
+#body .box1 input:hover{
+    border-style: none;
+}
+
+#body .box1 a {
+    font-size: 120%;
+    text-decoration: none;
+    background-color: bisque;
+    color: rgb(172, 139, 99);
+    border-radius: 15px;
+    padding: 1% 2%;
+    border: 1px;
+}
+
+#body .box1  a:hover{
+    background-color: rgb(136,112,87);
+}
+
+#body .box2{
+    height: 60%;
+    margin: 0 10%;
+}
+#body .box2 .small-box1{
+    background-color: rgb(212, 190, 163);
+    width: 50%;
+    height: 100%;
+    float: left;
+    border-radius: 15px;
+    overflow-y: scroll;
+}
+#body .box2 .small-box2{
+    background-color: rgb(222, 183, 125);
+    width: 35%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+    text-align: center;
+    border-radius: 15px;
+}
+#body .box2 .small-box1 a{
+    display: block;
+    font-size: 200%;
+    padding-left: 10%;
+    padding-bottom: 5%;
+    color: rgb(163, 136, 99);
+    text-decoration: none;
+    padding-top: 3%;
+}
+#body .box2 .small-box1 a:hover{
+    background-color: rgb(210, 185, 144);
+    border-radius: 15px;
+}
+#body .box2 .small-box2 h3{
+    font-size: 200%;
+    color: rgb(163, 127, 95);
+}
+
+form {
+    height: 100%;
+    width: 100%;
+}
+
+#body .box2 .small-box2 textarea    {
+    width: 80% ;
+    height: 60%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid black;
+    font-size: 200%;
+    padding: 2%;
+    border-radius: 15px;
+}
+#body .box2 .small-box2 .send input{
+    font-size: 150%;
+    text-decoration: none;
+    background-color: bisque;
+    color: rgb(172, 139, 99);
+    border-radius: 15px;
+    padding: 1% 10%;
+    border: 1px;
+}
+#body .box2 .send input:hover{
+    background-color: rgb(136,112,87);
+}
+
+.choice {
+    color: rgb(107, 82, 60);
+    font-size: 30px;
+    padding-top: 2%;
+}
+
+.choice select {
+    font-size: 25px;
+}

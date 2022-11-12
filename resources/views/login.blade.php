@@ -33,6 +33,8 @@
                     <div class="button">
                         <input type="submit" name="submit" value="LOGIN">
                     </div>   
+                    <label for="" class="label"></label>
+                    <label for="" class="label"></label>
                 </form>
                 
             </div>

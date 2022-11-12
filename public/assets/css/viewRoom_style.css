@@ -1,0 +1,246 @@
+.box {
+    width: 50%;
+    height: 100%;
+    padding: 5% 5%;
+    padding-bottom: 3%;
+    float: left;
+}
+
+.box .small-box {
+    width: 100%;
+    height: 100%;
+}
+.holder {
+    background-color: rgba(153, 98, 22, 0.4);
+    color: white;
+    font-size: 20px;
+    padding: 0 30px;
+    padding-bottom: 60px;
+    height: 100%;
+    width: 100%;
+
+}
+
+form {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.form-body {
+    background-color: rgb(211, 166, 104);
+    margin-top: 1%;
+    padding: 1% 2%;
+    border-radius: 20px;
+}
+
+.holder .title {
+    padding-top: 2%;
+    font-size: 40px;
+    text-align: center;
+}
+
+#body .holder .label {
+    font-size: 25px;
+    padding: 15px 0;
+    display: block;
+}
+
+#body .holder .button {
+    padding-top: 15px;
+}
+
+.button.bt1 {
+    padding-left: 20px;
+    float: right;
+}
+
+.button.bt2 {
+    padding-left: 0px;
+    float: left;
+    margin-bottom: 2%;
+}
+
+.holder .back {
+    margin-top: 15px;
+    padding: 0 3px;
+    float: right;
+    font-size: 23px;
+    line-height: 24px;
+    text-decoration: none;
+    background-color: white;
+    border: 2px solid black ;
+    padding-bottom: 2px;
+}
+
+select {
+    font-size: 20px;
+    padding: 5px 0;
+    margin-bottom: 3px;
+}
+
+.close {
+    display: none;
+}
+
+
+.row {
+    height: 40%;
+    width: 100%;
+    display: block;
+    padding: 1.5% 1%;
+}
+
+
+.row ul li{
+    display: inline;
+    width: 50%;
+    text-align: center;
+    line-height: 150%;
+}
+
+.clear {
+    clear: both;
+}
+
+.row ul {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(209, 189, 152);
+}
+
+.row ul a {
+    height: 100%;
+    width: 100%;
+    color: black;
+}
+
+.back.bt2 {
+    margin-top: 5%;
+    float: left;
+    margin-bottom: 1%;
+    color: black;
+}
+
+.back.bt3 {
+    margin-top: 5%;
+    float: right;
+    margin-bottom: 1%;
+    color: black;
+}
+
+.img-holder-1 {
+    margin-top: 2%;
+    height: 40%;
+    width: 33.3333%;
+    padding: 0 2%;
+    float: left;
+    margin-bottom: 4%;
+}
+
+.img-holder-1 img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.right {
+    margin-right: 1%;
+    float: right;
+    border: 1.5px solid black;
+}
+
+.colored-box {
+    background-color: rgb(163, 103, 19);;
+}
+
+#img-1 {
+    font-size: 20px;
+}
+
+#img-2 {
+    font-size: 20px;
+}
+
+#img-3 {
+    font-size: 20px;
+}
+
+.black-text {
+    color: black;
+    padding: 0;
+}
+
+.box-left {
+    padding-right: 0;
+}
+
+.ad {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 2%;
+    width: 30%;
+    background-color: rgb(211, 49, 49);
+}
+
+.box-left {
+    padding-right: 0;
+}
+
+.container1 {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.container1 .slider1 {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.slider1 .box1 {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.container1 #preBtn1 {
+    position: absolute;
+    display: flex;
+    font-size: 50px;
+    top: 45%;
+    left: 5%;
+    z-index: 1;
+    cursor: pointer;
+    color: white;
+}
+
+.container1 #nextBtn1 {
+    position: absolute;
+    display: flex;
+    font-size: 50px;
+    top: 45%;
+    right: 5%;
+    z-index: 1;
+    cursor: pointer;
+    color: white;
+}
+
+.container1 .slider1 .box1 {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(119, 76, 16);
+    
+}
+
+.box1 img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}

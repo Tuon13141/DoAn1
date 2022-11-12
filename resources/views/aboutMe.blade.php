@@ -9,19 +9,24 @@
 </head>
 <body>
     <div id="header">
-        <img class="logo" src="./assets/img/logo1.jpg" alt="">
-        <div class="user-account">
-            <div class="ava {{ session()->has('role') ? '' : 'close' }}">
-                <a href="{{ route('myPage') }}">Tôi</a>                  
-            </div>
-        </div>
-        <a class="upload_new" href="/">Đăng tin</a>
-        <ul>
-            <li>
-                <a href="{{ route('login') }}" class="{{ session()->has('role') ? 'close' : '' }}">Đăng nhập</a>
+        <img class="logo" src="/assets/img/logo1.jpg" alt="a">
+        <ul class="sub">
+            <a class="login {{ session()->has('role') ? 'close' : '' }}" href="{{ route('login') }}">Đăng nhập</a>
+            <a class="me {{ session()->has('role') ? '' : 'close' }}" href="{{ route('myPage') }}">Tôi</a>
+            <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
+                <a href="{{ route('myPage') }}">Trang cá nhân</a>
             </li>
+            <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
+                <a href="">Thông báo</a>
+            </li>
+            <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
+                <a href="{{ route('logout') }}">Đăng xuất</a>
+            </li>
+
+        </ul>
+        <ul class="head-bar">
             <li>
-                <a href="/">Hỏi đáp</a>
+                <a href="{{ route('help') }}">Hỏi đáp</a>
             </li>
             <li>
                 <a href="{{ route('page1') }}">Thuê trọ</a>
@@ -30,29 +35,29 @@
                 <a href="{{ route('index') }}">Trang chủ</a>
             </li>
         </ul>
-
     </div>
 
-    <div id="body">
-        <div class="big-box">
-            <div class="holder">
-                <form action="{{ route('processAboutMe') }}" method="post">
+    <div id="holder">
+        <div class="container">
+            <div class="header">
+                Thay đổi thông tin cá nhân
+            </div>
+            <div class="body">
+                <form action="{{ route('processChangeAboutMe') }}" method="post" enctype="multipart/form-data" >
                     @csrf
-                    <div class="title">
-                        Chỉnh sửa thông tin cá nhân
-                    </div>
+
                     <label for="name" class="label">
                         Họ Tên:         
                     </label>
                     
                     <input type="text" id="name" class="input" placeholder="Name" name="name"> 
-    
+        
                     <label for="email" class="label">
                         Email:         
                     </label>
                     
                     <input type="text" id="email" class="input" placeholder="Email" name="email"> 
-    
+        
                     <label for="password" class="label">
                         Password:   
                     </label>
@@ -64,32 +69,25 @@
                     </label>
                     
                     <input type="text" id="phone_number" class="input" placeholder="Phone Number" name="phone_number"> 
-
+        
+                    <label for="ava" class="label">
+                        Ảnh đại diện:   
+                    </label>
+                    
+                    <input type="file" id="ava" class="input" name="ava">
+        
                     <div class="button">
                         <input type="submit" name="submit" value="Thay đổi">
                     </div>   
                 </form>
+                
+            </div>
+            <div class="footer">
                 <a href="{{ route('myPage') }}">Quay lại</a>
             </div>
         </div>
+        
     </div>
 
-    <div id="footer">
-        <div class="info">
-            <ul>
-                <li class="about-us">About Us</li>
-                <li>Nhóm 1</li>
-                <li>Môn đồ án 1</li>
-                <li>Web quản lí nhà trọ</li>
-            </ul>
-        </div>
-        <div class="contact">
-            <ul>
-                <li class="contact-us">Contact</li>
-                <li>Phone number: 090912345</li>
-                <li>Email : nhom1doan1@gmail.com</li>
-            </ul>
-        </div>
-    </div>
 </body>
 </html>

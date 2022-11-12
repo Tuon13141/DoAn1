@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Motel extends Authenticatable
+class Room extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -24,6 +24,8 @@ class Motel extends Authenticatable
         'motel_id',
         'status',
         'area',
+        'number',
+        'qc',
     ];
 
     /**

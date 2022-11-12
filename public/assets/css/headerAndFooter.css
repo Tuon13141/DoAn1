@@ -1,83 +1,103 @@
 *{
-    padding: 0;
+    padding : 0;
     margin: 0;
     box-sizing: border-box;
-    /*background-color: white; */
-}
 
+}
+:root{
+    --cl: rgb(136,112,87);
+}
 html{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(236, 222, 203);
-}
-
-#main{
-
-}
-
+    background-color: rgb( 246,232,215 );
+} 
 #header{
-    height: 80px;
-    background-color: rgb(163, 103, 19);
+    top: 0;
     position: fixed;
-    top : 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(136,112,87);
 }
 
 #header .logo {
     float: left;
-    height: 80px;
+    height: 80x;
     width: 80px;
+    background-color:  var(--cl);
     margin-left: 300px;
+        
+}
+    
+#header ul li{
+    display: block;     
+}
+    
+#header .head-bar a{         
+        color: white;
+        font-size: 25px;
+        line-height: 80px;
+        float: right;
+        padding: 0 15px;
+        text-decoration: none ;
+}
+#header .head-bar a:hover{
+    background-color: rgb(179, 148, 114);
+    border-radius: 80px;
 }
 
-#header ul li{
-    display: inline;
+#header .sub {
+    height: 80px;
+    width: 220px;
+    display: block;
+    background-color:rgb(179, 148, 114);
+    float: right;   
+    margin: 0 1%;
+    margin-right: 4%;
+    text-align: center;
+    line-height: 45px;
     
 }
 
-#header ul a{
-    float: right;
-    padding: 0 15px;
-    line-height: 80px;
-    font-size: 23px;
+#header .login{
+    width: 100%;
     text-decoration: none;
-    color: white;
+    line-height: 80px;
+    font-size: 23px; 
+    color: white;     
+}   
+
+#header .me {
+    width: 100%;
+    text-decoration: none;
+    line-height: 80px;
+    font-size: 23px; 
+    color: white;  
 }
 
-#header .upload_new {
-    float: right;   
-    padding: 0 40px;
-    line-height: 80px;
-    font-size: 23px;
-    text-decoration: none;
-    color: white;
-    background-color: rgb(119, 76, 16);
+#header .sub:hover{  
+        background-color:rgb(153, 120, 82);
+        color:black;
 }
 
-#header ul .close {
+#header .sub:hover .child-sub{
+    display: inline-block;
+}
+
+#header .sub .child-sub {
     display: none;
+    font-size: 20px;
+    background-color: rgba(203, 150, 106, 0.6);
+    width: 100%;
+}
+#header .sub .child-sub:hover{
+    background-color: rgb(179, 148, 114);
+    
+
 }
 
-#header .user-account {
-    float: right;
-    width: 16%;
-    height: 80px;
-    text-align: center;
-    font-size: 23px;
-}
-
-#header .user-account .ava {
-    background-color: whitesmoke;
-    width: 100px;
-    height: 50px;
-    border-radius: 15px;
-    margin: 15px auto;
-    line-height: 55px;   
-}
-
-#header .user-account .ava a {
+#header .sub .child-sub > a {
+    color: black;
     text-decoration: none;
+    line-height: 40px;
 }
 
 #body {
@@ -87,50 +107,20 @@ html{
 }
 
 #footer {
-    height: 80px;
-    background-color: rgb(163, 103, 19);
-    position: fixed;
-    bottom : 0;
+    position: fixed ;
+    bottom: 0;
     left: 0;
     right: 0;
-    color: white;
-    
+    height: 80px;
+    width: 100%;
+    background-color: var(--cl);
 }
 
-#footer .info {
-    float: left;
+.close {
+    display: none;
 }
 
-#footer .info ul {
-    padding-left: 200px;
-    list-style-type: none;
+.child-sub.close > a {
+    display: none;
 }
 
-#footer .info ul li {
-    
-    font-size: 13px;
-}
-
-#footer .info .about-us {
-    font-size: 25px;
-    margin-left: -20px;
-    text-decoration: underline;
-}
-
-#footer .contact ul{
-    display: inline;
-    float: right;
-    padding-right: 200px;
-    padding-top: 10px;
-    list-style-type: none;
-}
-
-#footer .contact ul li {
-    font-size: 13px;
-}
-
-#footer .contact .contact-us {
-    font-size: 25px;
-    margin-left: -20px;
-    text-decoration: underline;
-}

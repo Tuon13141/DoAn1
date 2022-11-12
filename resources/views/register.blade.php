@@ -12,7 +12,7 @@
     <div id="holder">
         <div id="container">
             <div class="header">
-                Register
+                Register as User
             </div>
            
             <div class="body">
@@ -41,10 +41,15 @@
                     </label>
                     
                     <input type="text" id="name" class="input" placeholder="Name" name="name"> 
-    
+                    
+              
                     <div class="button">
                         <input type="submit" name="submit" value="Register">
-                    </div>   
+                    </div>  
+                    
+                    <label for="" class="label">
+                        <a href="{{ route('hostRegister') }}" class="btn">Đăng kí tài khoản Chủ trọ ?</a> 
+                    </label>
                 </form>
             </div>
                 
@@ -52,6 +57,7 @@
             <div class="footer">
                 Đã có tài khoản?  
                 <a href="{{ route('login') }}" class="btn">Đăng nhập ngay!</a>
+                
             </div>
         </div>      
     </div>

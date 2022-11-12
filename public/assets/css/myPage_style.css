@@ -10,7 +10,6 @@
     width: 50%;
     height: 100%;
     padding: 4% 5%;
-   
 }
 
 #body .box .small-box-1 {
@@ -24,7 +23,6 @@
 .small-box-1 .circle {
     height: 70%;
     width: 40%;
-    background-color: whitesmoke;
     margin: auto;
     border-radius: 100%;
 }
@@ -78,17 +76,21 @@
     height: 105%;
     background-color: rgb(119, 76, 16);
     border-radius: 10px;
-    padding: 7%;
+    padding: 3% 0%;
     color: rgb(70, 42, 19);
+}
+
+.small-box-3.pd7 {
+    padding: 7%;
 }
 
 .box .host {
     width: 90%;
-    height: 60%;
+    height: 100%;
     margin: 0 auto;
     padding-top: 5%;
     background-color: rgb(209, 178, 135);
-
+    border-radius: 10px;
 }
 
 .box .host a {
@@ -105,21 +107,62 @@
     border-radius: 5px;
 }
 
+.box .host .title {
+    font-size: 23px;
+    padding-left: 5%;
+    font-weight: 600;
+}
+
+
 .box .admin {
-    
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 5%;
+    background-color: rgb(209, 178, 135);
+    border-radius: 10px;
+}
+
+.box .admin .title {
+    font-size: 23px;
+    padding-left: 5%;
+    font-weight: 600;
+}
+
+.box .admin a {
+    float: right;
+    margin-right: 5%;
+    color: red;
 }
 
 .box .user {
-    
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    background-color: rgb(209, 178, 135);
+    border-radius: 10px;
 }
+
+.box .user img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.box .user .title {
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    padding-top: 1%;
+
+}
+
 
 .box .close {
     display: none;
 }
 
-.box .title {
-    font-size: 23px;
-    padding-left: 5%;
-    font-weight: 600;
-}
+
+
 

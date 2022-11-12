@@ -19,6 +19,9 @@ class Host extends Authenticatable
         'username',
         'email',
         'password',
+        'hadAva',
+        'name',
+        'phone_number',
     ];
 
     /**

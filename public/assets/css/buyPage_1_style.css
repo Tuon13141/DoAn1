@@ -52,6 +52,16 @@
     margin: 0 auto;
 }
 
-
+.more {
+    width: 160px;
+    height: 40px; 
+    line-height: 40px; 
+    color: white; 
+    text-align: center; 
+    font-size: 30px;                    
+    float: right; 
+    margin-top: 30px; 
+    background-color: rgb(119, 76, 16)
+}
 
 

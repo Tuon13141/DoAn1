@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone_number', 20);
             $table->string('email', 50);
             $table->string('name', 20);
+            $table->string('hadAva', 20);
         });
     }
 

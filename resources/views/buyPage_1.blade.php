@@ -10,19 +10,24 @@
 </head>
 <body>
     <div id="header">
-        <img class="logo" src="./assets/img/logo1.jpg" alt="">
-        <div class="user-account">
-            <div class="ava {{ session()->has('role') ? '' : 'close' }}">
-                <a href="{{ route('myPage') }}">Tôi</a>            
-            </div>
-        </div>
-        <a class="upload_new" href="/">Đăng tin</a>
-        <ul>
-            <li>
-                <a href="{{ route('login') }}" class="{{ session()->has('role') ? 'close' : '' }}">Đăng nhập</a>
+        <img class="logo" src="/assets/img/logo1.jpg" alt="a">
+        <ul class="sub">
+            <a class="login {{ session()->has('role') ? 'close' : '' }}" href="{{ route('login') }}">Đăng nhập</a>
+            <a class="me {{ session()->has('role') ? '' : 'close' }}" href="{{ route('myPage') }}">Tôi</a>
+            <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
+                <a href="{{ route('myPage') }}">Trang cá nhân</a>
             </li>
+            <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
+                <a href="">Thông báo</a>
+            </li>
+            <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
+                <a href="{{ route('logout') }}">Đăng xuất</a>
+            </li>
+
+        </ul>
+        <ul class="head-bar">
             <li>
-                <a href="/">Hỏi đáp</a>
+                <a href="{{ route('help') }}">Hỏi đáp</a>
             </li>
             <li>
                 <a href="{{ route('page1') }}">Thuê trọ</a>
@@ -31,9 +36,15 @@
                 <a href="{{ route('index') }}">Trang chủ</a>
             </li>
         </ul>
-
     </div>
 
+    <?php 
+        use Illuminate\Support\Facades\DB;
+        use Illuminate\Database\Query\Builder;
+
+        $room_qc = DB::table('room')->where('qc', 'yes')->where('status', 'available')->inRandomOrder()->limit(5)->get();
+        $stt = 0;
+    ?>
 
     <div id="body">
         <div class="container1">
@@ -42,24 +53,20 @@
             <p id="nextBtn1">></p> 
             <div class="slider1">
                 <div class="box1" id="lastClone1">
-                    <img src="./assets/img/tro3.jpg" alt="">
+                    <img src="/img/room/{{ $room_qc[$room_qc->count() - 1]->host_username }}_{{ $room_qc[$room_qc->count() - 1]->motel_id }}_{{ $room_qc[$room_qc->count() - 1]->id }}_motel_img1.jpg" alt="">
                 </div>
-                <div class="box1">
-                    <img src="./assets/img/tro1.jpg" alt="">
-                </div>
-                <div class="box1">
-                    <img src="./assets/img/tro2.jpg" alt="">
-                </div>
-                <div class="box1">
-                    <img src="./assets/img/tro3.jpg" alt="">
-                </div>
+                @while ($stt < $room_qc->count()) 
+                    <div class="box1">
+                        <img src="/img/room/{{ $room_qc[$stt]->host_username }}_{{ $room_qc[$stt]->motel_id }}_{{ $room_qc[$stt]->id }}_motel_img1.jpg" alt="">
+                    </div>
+                    <?php $stt++; ?>
+                @endwhile
                 <div class="box1" id="firstClone1">
-                    <img src="./assets/img/tro1.jpg" alt="">
+                    <img src="/img/room/{{ $room_qc[0]->host_username }}_{{ $room_qc[0]->motel_id }}_{{ $room_qc[0]->id }}_motel_img1.jpg" alt="">
                 </div>
                 
             </div>   
-            <a style="width: 160px; height: 40px; line-height: 40px; color: white; text-align: center; font-size: 30px; 
-                    float: right; margin-top: 30px; background-color: rgb(119, 76, 16)">
+            <a href="{{ route('page2_randomView') }}" class="more">
                 Xem thêm
             </a>    
         </div>
@@ -67,21 +74,7 @@
     </div>
 
     <div id="footer">
-        <div class="info">
-            <ul>
-                <li class="about-us">About Us</li>
-                <li>Nhóm 1</li>
-                <li>Môn đồ án 1</li>
-                <li>Web quản lí nhà trọ</li>
-            </ul>
-        </div>
-        <div class="contact">
-            <ul>
-                <li class="contact-us">Contact</li>
-                <li>Phone number: 090912345</li>
-                <li>Email : nhom1doan1@gmail.com</li>
-            </ul>
-        </div>
+       
     </div>
 
 

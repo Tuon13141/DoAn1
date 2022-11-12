@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HostController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,12 @@ Route::middleware('user_access')->group(function () {
         return view('aboutMe');
     })->name('aboutMe');
 
+    Route::get('/help', function () {
+        return view('help');
+    })->name('help');
+
+    Route::post('/help', [PageController::class, 'helpController'])->name('sendHelp');
+
     Route::middleware('host_access')->group(function () {
         Route::get('/hostMotel', [HostController::class, 'showMotel']
         )->name('hostMotel');
@@ -46,7 +53,27 @@ Route::middleware('user_access')->group(function () {
             return view('addMotel');
         })->name('addMotel');
 
-        Route::get('/aboutMotel/{id}', [HostController::class, 'processAboutMotel'])->name('aboutMotel');
+        Route::get('/aboutMotel/{motel_id}', [HostController::class, 'processAboutMotel'])->name('aboutMotel');
+
+        Route::post('/aboutMotel/{motel_id}', [HostController::class, 'processChangeAboutMotel'])->name('processChangeAboutMotel');
+
+        Route::post('/addMotel', [HostController::class, 'processAddMotel'])->name('processAddMotel');
+
+        Route::get('/aboutMotel/{motel_id}/delete', [HostController::class, 'processDeleteMotel'])->name('deleteMotel');
+
+        Route::get('/aboutMotel/{motel_id}/aboutRoom/{room_id}', [HostController::class, 'processAboutRoom'])->name('aboutRoom');
+
+        Route::post('/aboutMotel/{motel_id}/aboutRoom/{room_id}', [HostController::class, 'processChangeAboutRoom'])->name('changeAboutRoom');
+
+        Route::get('/aboutMotel/{motel_id}/addRoom', [HostController::class, 'addRoom'])->name('addRoom');
+
+        Route::post('/aboutMotel/{motel_id}/addRoom', [HostController::class, 'processAddRoom'])->name('processAddRoom');
+
+        Route::get('/aboutMotel/{motel_id}/aboutRoom/{room_id}/delete', [HostController::class, 'processDeleteRoom'])->name('deleteRoom');
+
+        Route::post('/aboutMotel/{motel_id}/addPicture', [HostController::class, 'processChangePictureMotel'])->name('changePictureMotel');
+
+        Route::post('/aboutMotel/{motel_id}/aboutRoom/{room_id}/addPicture', [HostController::class, 'processChangePictureRoom'])->name('changePictureRoom');
     });
 });
 
@@ -58,12 +85,18 @@ Route::get('/page1', function () {
     return view('buyPage_1');
 })->name('page1');
 
+Route::get('/page2/randomView', [PageController::class, 'randomViewController'])->name('page2_randomView');
+
+Route::get('/page2/orderedView', [PageController::class, 'viewPageController'])->name('page2_orderedView');
+
 Route::post('/login', [AuthController::class, 'processLogin'])->name('processLogin');
 
-Route::post('/register', [AuthController::class, 'processRegister'])->name('processRegister');
+Route::post('/registerUser', [AuthController::class, 'processRegister'])->name('processRegister');
+
+Route::post('/registerHost', [AuthController::class, 'processHostRegister'])->name('processHostRegister');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::post('/aboutMe', [AuthController::class, 'processAboutMe'])->name(('processAboutMe'));
+Route::post('/aboutMe', [AuthController::class, 'processChangeAboutMe'])->name(('processChangeAboutMe'));
 
-Route::post('/addMotel', [HostController::class, 'processAddMotel'])->name('processAddMotel');
+Route::get('/viewRoom/motel_id={motel_id}&room_id={room_id}&host_username={host_username}}', [PageController::class, 'viewRoom'])->name('viewRoom');
