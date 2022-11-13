@@ -1,28 +1,25 @@
-
-#body .picture-holder {
-    display: inline;
-}
-
-#body .picture-holder img{
-    
-    object-fit: cover;
-    height: 550px;
-    width: 600px;
-    margin-left: 12%;
-    margin-top: 5%;
-    border-radius: 5%;
-}
-
 #body .box {
-    display: inline;
-    margin-top: 5%;
-    margin-right: 12%;
-    float : right;
-    height: 550px;
-    width: 600px;
-    background-color: rgb(141, 90, 19);
-    border-radius: 5%;
-    color: rgb(235, 241, 250);
+    float : left;
+    height: 100%;
+    width: 50%;
+    padding: 5%;
+}
+
+.box .small-box {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(136,112,87);
+    color: black;
+}
+
+.small-box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.small-box.non-img {
+    padding: 3%;
 }
 
 #body .box h1 {
@@ -54,7 +51,7 @@
     padding: 15px;
     float: right;
     font-size: 30px;
-    color: rgb(59, 38, 8);
+    color: whitesmoke;
     background-color: rgb(221, 159, 71);
     text-decoration: none;
     border-radius: 15px;

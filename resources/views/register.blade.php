@@ -23,24 +23,44 @@
                     </label>
                     
                     <input type="text" id="username" class="input" placeholder="Username" name="username"> 
+                    @if ($errors->has('username'))               
+                        <p style="color: red">
+                            <br>{{ $errors->first('username')}}
+                        </p>
+                    @endif
     
                     <label for="email" class="label">
                         Email:         
                     </label>
                     
                     <input type="text" id="email" class="input" placeholder="Email" name="email"> 
+                    @if ($errors->has('email'))               
+                        <p style="color: red">
+                            <br>{{ $errors->first('email')}}
+                        </p>
+                    @endif
     
                     <label for="password" class="label">
                         Password:   
                     </label>
                     
                     <input type="text" id="password" class="input" placeholder="Password" name="password"> 
+                    @if ($errors->has('password'))               
+                        <p style="color: red">
+                            <br>{{ $errors->first('password')}}
+                        </p>
+                    @endif
 
                     <label for="name" class="label">
                         Name:   
                     </label>
                     
                     <input type="text" id="name" class="input" placeholder="Name" name="name"> 
+                    @if ($errors->has('name'))               
+                        <p style="color: red">
+                            <br>{{ $errors->first('name')}}
+                        </p>
+                    @endif
                     
               
                     <div class="button">
@@ -50,6 +70,12 @@
                     <label for="" class="label">
                         <a href="{{ route('hostRegister') }}" class="btn">Đăng kí tài khoản Chủ trọ ?</a> 
                     </label>
+
+                    @if(session('registerFailed'))
+                        <label for="" class="label">
+                            <p style="color: red">{{ session('registerFailed') }}</p>
+                        </label>     
+                    @endif
                 </form>
             </div>
                 

@@ -9,96 +9,102 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Models\User;
 use App\Models\Host;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\HostRegisterRequest;
+
 
 class AuthController extends Controller
 {
-    public function processLogin (Request $request) {
-        $roles = array('host', 'user', 'admin');
-        foreach($roles as $role){
-            if (Auth::guard($role)->attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {
-                $request->session()->put('username', Auth::guard($role)->user()->username);
-                $request->session()->put('role', $role);
+    public function processLogin (LoginRequest $request) {
+        if($request->input('username') != '' && $request->input('password') != '') {
+            $roles = array('host', 'user', 'admin');
+            foreach($roles as $role){
+                if (Auth::guard($role)->attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {
+                    $request->session()->put('username', Auth::guard($role)->user()->username);
+                    $request->session()->put('role', $role);
+                    $name = DB::table($role)->where('username', $request->input('username'))->value('name');
+                    $request->session()->put('name', $name);
+                    $email = DB::table($role)->where('username', $request->input('username'))->value('email');
+                    $request->session()->put('email', $email);
+                    $phone_number = DB::table($role)->where('username', $request->input('username'))->value(('phone_number'));
+                    $request->session()->put('phone_number', $phone_number);
+                    $request->session()->put('password', Hash::make($request->input('password')));
+                    $hadAva =  DB::table($role)->where('username', $request->input('username'))->value('hadAva');
+                    $request->session()->put('hadAva', $hadAva);
+                    return redirect()->route('index'); 
+                }
+            }
+            return back()->with('loginFailed', 'Username hoặc Mật Khẩu sai');
+        }
+        
+        return back();
+    }
+
+    public function processRegister(RegisterRequest $request){
+        if($request->input('username') != '' && $request->input('password') != '' && $request->input('email') != '' && $request->input('name') != '') {
+            $tables = array('host', 'user', 'admin');
+            foreach($tables as $table){
+                $userExists = DB::table($table)->where('username', $request->input('username'))->exists();
+                $emailExists = DB::table($table)->where('email', $request->input('email'))->exists();
+                if ($userExists || $emailExists){
+                    return back()->with('registerFailed', 'Đã tồn tại Username hoặc Email');
+                }
+            }
+            $user = new User([
+                'username' => $request->input('username'),
+                'email' => $request->input('email'),
+                'password'=> Hash::make($request->input('password')),
+                'name' => $request->input('name'),
+                'phone_number' => null,
+                'hadAva' => 'no',
+            ]);
+            $user->save();
+            $request->session()->put('username', $request->input('username'));
+            $request->session()->put('role', 'user');
+            $request->session()->put('name', $request->input('name'));
+            $request->session()->put('email', $request->input('email'));
+            $request->session()->put('phone_number', null);
+            $request->session()->put('hadAva', 'no');
+            
+            return redirect()->route('index');
+        }
+
+        return back();
+    }
+
+    public function processHostRegister(HostRegisterRequest $request){
+        if($request->input('username') != '' && $request->input('password') != '' && $request->input('email') != '' && $request->input('name') != ''
+            && $request->input('phone_number') != '') {
+                $tables = array('host', 'user', 'admin');
+                foreach($tables as $table){
+                    $userExists = DB::table($table)->where('username', $request->input('username'))->exists();
+                    $emailExists = DB::table($table)->where('email', $request->input('email'))->exists();
+                    $phone_numberExists = DB::table($table)->where('phone_number', $request->input('phone_number'))->exists();
+                    if ($userExists || $emailExists || $phone_numberExists){
+                        return back()->with('registerFailed', 'Đã tồn tại Username hoặc Email');
+                    }
+                }
+                $host = new Host([
+                    'username' => $request->input('username'),
+                    'email' => $request->input('email'),
+                    'password'=> Hash::make($request->input('password')),
+                    'name' => $request->input('name'),
+                    'phone_number' => $request->input('phone_number'),
+                    'hadAva' => 'no',
+                ]);
+                $host->save();
+                $request->session()->put('username', $request->input('username'));
+                $request->session()->put('role', 'host');
+                $request->session()->put('name', $request->input('name'));
+                $request->session()->put('email', $request->input('email'));
+                $request->session()->put('phone_number', null);
+                $request->session()->put('hadAva', 'no');
                 
-                $name = DB::table($role)->where('username', $request->input('username'))->value('name');
-                $request->session()->put('name', $name);
-                $email = DB::table($role)->where('username', $request->input('username'))->value('email');
-                $request->session()->put('email', $email);
-                $phone_number = DB::table($role)->where('username', $request->input('username'))->value(('phone_number'));
-                $request->session()->put('phone_number', $phone_number);
-                $request->session()->put('password', Hash::make($request->input('password')));
-                $hadAva =  DB::table($role)->where('username', $request->input('username'))->value('hadAva');
-                $request->session()->put('hadAva', $hadAva);
-                return redirect()->route('index'); 
-
-            }
-        }
-        return redirect()->route('index');
-    }
-
-    public function processRegister(Request $request){
-        $tables = array('host', 'user', 'admin');
-
-        if($request->input('username') == '' || $request->input('password') == '' || $request->input('email') == '' || $request->input('name') == '') {
-            return back();
+                return redirect()->route('index');
         }
 
-        foreach($tables as $table){
-            $userExists = DB::table($table)->where('username', $request->input('username'))->exists();
-            $emailExists = DB::table($table)->where('email', $request->input('email'))->exists();
-            if ($userExists || $emailExists){
-                return back();
-            }
-        }
-        $user = new User([
-            'username' => $request->input('username'),
-            'email' => $request->input('email'),
-            'password'=> Hash::make($request->input('password')),
-            'name' => $request->input('name'),
-            'phone_number' => null,
-            'hadAva' => 'no',
-        ]);
-        $user->save();
-        $request->session()->put('username', $request->input('username'));
-        $request->session()->put('role', 'user');
-        $request->session()->put('name', $request->input('name'));
-        $request->session()->put('email', $request->input('email'));
-        $request->session()->put('phone_number', null);
-        $request->session()->put('hadAva', 'no');
-        
-        return redirect()->route('index');
-    }
-
-    public function processHostRegister(Request $request){
-        if($request->input('username') == '' || $request->input('password') == '' || $request->input('email') == '' || $request->input('name') == '' || $request->input('phone_number')) {
-            return back();
-        }
-
-        $tables = array('host', 'user', 'admin');
-        foreach($tables as $table){
-            $userExists = DB::table($table)->where('username', $request->input('username'))->exists();
-            $emailExists = DB::table($table)->where('email', $request->input('email'))->exists();
-            $phone_numberExists = DB::table($table)->where('phone_number', $request->input('phone_number'))->exists();
-            if ($userExists || $emailExists || $phone_numberExists){
-                return back();
-            }
-        }
-        $host = new Host([
-            'username' => $request->input('username'),
-            'email' => $request->input('email'),
-            'password'=> Hash::make($request->input('password')),
-            'name' => $request->input('name'),
-            'phone_number' => $request->input('phone_number'),
-            'hadAva' => 'no',
-        ]);
-        $host->save();
-        $request->session()->put('username', $request->input('username'));
-        $request->session()->put('role', 'host');
-        $request->session()->put('name', $request->input('name'));
-        $request->session()->put('email', $request->input('email'));
-        $request->session()->put('phone_number', null);
-        $request->session()->put('hadAva', 'no');
-        
-        return redirect()->route('index');
+        return back();
     }
 
     public function logout(Request $request){

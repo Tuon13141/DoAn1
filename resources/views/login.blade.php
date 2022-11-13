@@ -24,19 +24,34 @@
                     </label>
                     
                     <input type="text" id="username" class="input" placeholder="Username" name="username"> 
+                    
+                    @if ($errors->has('username'))               
+                        <p style="color: red">
+                            <br>{{ $errors->first('username')}}
+                        </p>
+                    @endif
                     <label for="password" class="label">
                         Password:   
                     </label>
                     
                     <input type="text" id="password" class="input" placeholder="Password" name="password"> 
-    
+
+                    @if ($errors->has('password'))               
+                        <p style="color: red">
+                            <br>{{ $errors->first('password')}}
+                        </p>
+                    @endif
+                    
                     <div class="button">
                         <input type="submit" name="submit" value="LOGIN">
                     </div>   
-                    <label for="" class="label"></label>
+                    <label for="" class="label">
+                        @if(session('loginFailed'))
+                            <p style="color: red">{{ session('loginFailed') }}</p>
+                        @endif
+                    </label>
                     <label for="" class="label"></label>
                 </form>
-                
             </div>
     
             <div class="footer">

@@ -52,15 +52,17 @@
                 
             </div>
             <div class="small-box-2">
-                Số điện thoại: {{ session('phone_number') == '0' ? '' : session('phone_number') }} <br>
-                Email: {{ session('email') }} <br>
+                <div class="content">
+                    Số điện thoại: {{ session('phone_number') == '0' ? '' : session('phone_number') }} <br>
+                    Email: {{ session('email') }} <br>                 
+                </div>  
                 <a href="{{ route('aboutMe') }}" class="change">Chỉnh sửa</a>
-                <a href="{{ route('logout') }}" class="log-out">Đăng xuất</a>            
+                <a href="{{ route('logout') }}" class="log-out">Đăng xuất</a>                 
             </div>
             
         </div>
         <div class="box">
-            <div class="small-box-3 {{ session('role') == 'user' ? '' : 'pd7' }}">
+            <div class="small-box-3 {{ session('role') != 'user' ? 'pd3' : '' }}">
                 <div class="host {{ session('role') == 'host' ? '' : 'close' }}">
                     <div class="host-content">
                         <div class="title">
@@ -93,8 +95,11 @@
                     <div class="title">
                         Gợi ý cho bạn: 
                     </div>
+
+                    <a href="{{ route('viewRoom', ['motel_id' => $room_qc->motel_id, 'room_id' => $room_qc->id, 'host_username'=> $room_qc->host_username]) }}">
+                        <img src="/img/room/{{ $room_qc->host_username }}_{{ $room_qc->motel_id }}_{{ $room_qc->id }}_motel_img1.jpg" alt="">
+                    </a>
                     
-                    <img src="/img/room/{{ $room_qc->host_username }}_{{ $room_qc->motel_id }}_{{ $room_qc->id }}_motel_img1.jpg" alt="">
                 </div>
                 <div class="admin {{ session('role') == 'admin' ? '' : 'close' }}">
                     <div class="title">
@@ -108,11 +113,11 @@
                         </h1> <br> <br> <br> <br> <br>
                             - Phòng trọ xin cấp quảng cáo : 3 <a href="">Chi tiết</a>
                             <br> <br> <br>
-                            - Đơn khiếu nại : {{ $complain }} <a href="">Chi tiết</a>
+                            - Đơn khiếu nại : {{ $complain }} <a href="{{ route('adminQuestion', ['type' => 'complain']) }}">Chi tiết</a>
                             <br> <br> <br>
-                            - Yêu cầu hỗ trợ : {{ $support }} <a href="">Chi tiết</a>
+                            - Yêu cầu hỗ trợ : {{ $support }} <a href="{{ route('adminQuestion', ['type' => 'support']) }}">Chi tiết</a>
                             <br> <br> <br>
-                            - Báo lỗi : {{ $bug }} <a href="">Chi tiết</a>
+                            - Báo lỗi : {{ $bug }} <a href="{{ route('adminQuestion', ['type' => 'bug']) }}">Chi tiết</a>
                     </div>  
                 </div>
             </div>

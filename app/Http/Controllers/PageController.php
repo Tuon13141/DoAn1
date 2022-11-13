@@ -157,13 +157,12 @@ class PageController extends Controller
             'email' => session('email'),
             'phone_number' => session('phone_number'),
             'question' => $question,
-            'type' => $type
+            'type' => $type,
+            'hadAnwser' => 'no',
         ]);
 
         $help->save();
 
-       
-
-        return back();
+        return back()->with('hadSend', 'Đã gửi câu hỏi');
     }
 }

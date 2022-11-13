@@ -23,6 +23,7 @@ class Question extends Authenticatable
         'phone_number',
         'question',
         'type',
+        'hadAnwser',
     ];
 
     /**

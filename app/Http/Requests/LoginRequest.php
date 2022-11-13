@@ -13,7 +13,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,14 +25,15 @@ class LoginRequest extends FormRequest
     {
         return [
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ];
     }
 
     public function messages()
     {
         return[
-
+            'username.required' => 'Username không thể bị bỏ trống!',
+            'password.required' => 'Mật Khẩu không thể bị bỏ trống!',
         ];
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HostController;
 use App\Http\Controllers\PageController;
@@ -75,6 +76,11 @@ Route::middleware('user_access')->group(function () {
 
         Route::post('/aboutMotel/{motel_id}/aboutRoom/{room_id}/addPicture', [HostController::class, 'processChangePictureRoom'])->name('changePictureRoom');
     });
+
+    Route::middleware('admin_access')->group(function () {
+        Route::get('/adminQuestion/{type}', [AdminController::class, 'showQuestion']
+        )->name('adminQuestion');
+    }); 
 });
 
 Route::get('/hostRegister', function () {

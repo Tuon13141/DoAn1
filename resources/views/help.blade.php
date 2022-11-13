@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/assets/css/headerAndFooter.css">
     <link rel="stylesheet" href="/assets/css/help.css">
-    <title>Document</title>
+    <title>Hỏi Đáp</title>
 </head>
 <body>
     <div id="header">
@@ -71,11 +71,13 @@
                             <option value="bug">Báo lỗi</option>
                         </select>
                     </div>
-                    <textarea type="text" name="question">
+                    <textarea type="text" name="question" placeholder="">
                     </textarea>
+                    
                     <div class="send">
                         <input type="submit" name="submit" value="Gửi">
                     </div>
+                    {{ session('hadSend') ? session('hadSend') : ''}}
                 </form>
             </div>
         </div>
