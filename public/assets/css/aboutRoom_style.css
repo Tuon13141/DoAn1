@@ -199,3 +199,9 @@ select {
 .box-left {
     padding-right: 0;
 }
+
+.qc-room {
+    color: white;
+    text-decoration: none;
+    
+}

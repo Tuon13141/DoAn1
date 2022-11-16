@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('question', function (Blueprint $table) {
+        Schema::create('answer', function (Blueprint $table) {
             $table->id()->unique()->autoIncrement();
             $table->string('username', 20);
-            $table->string('email', 50);
-            $table->string('phone_number', 20);
             $table->text('question');
-            $table->string('type', 40);
+            $table->text('answer');
             $table->text('created_at');
             $table->text('updated_at');
-            $table->string('role',20);
+            $table->text('day_ask');
+            $table->string('hadSeen', 20);
+            $table->string('type', 20);
+            $table->string('role', 20);
         });
     }
 

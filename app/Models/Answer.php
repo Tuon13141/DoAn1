@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Question extends Authenticatable
+class Answer extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -19,11 +19,11 @@ class Question extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'email',
-        'phone_number',
         'question',
+        'answer',
+        'hadSeen',
+        'day_ask',
         'type',
-        'hadAnwser',
         'role',
     ];
 
@@ -47,5 +47,5 @@ class Question extends Authenticatable
 
     public $timestamps = true;
 
-    protected $table = 'question';
+    protected $table = 'answer';
 }

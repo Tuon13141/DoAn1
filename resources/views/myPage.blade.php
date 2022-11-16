@@ -19,7 +19,13 @@
                 <a href="{{ route('myPage') }}">Trang cá nhân</a>
             </li>
             <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
-                <a href="">Thông báo</a>
+                <?php 
+                    use Illuminate\Support\Facades\DB;
+                    use Illuminate\Database\Query\Builder;
+                    $note = DB::table('answer')->where('username', session('username'))->where('hadSeen', 'no')->count();
+                ?>              
+                <a href="{{ route('notification') }}">Thông báo</a>
+                {{ $note > 0 ? '*' : '' }}
             </li>
             <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
                 <a href="{{ route('logout') }}">Đăng xuất</a>
@@ -67,7 +73,6 @@
                     <div class="host-content">
                         <div class="title">
                             <?php 
-                                use Illuminate\Support\Facades\DB;
                                 $number_of_motel = DB::table('motel')->where('host_username', session('username'))->count();
                                 $number_of_room = DB::table('room')->where('host_username', session('username'))->count();
                                 $number_of_room_status = DB::table('room')->where('host_username', session('username'))->where('status', 'available')->count();
@@ -86,7 +91,6 @@
                 </div>
                 <div class="user {{ session('role') == 'user' ? '' : 'close' }}">
                     <?php 
-                        use Illuminate\Database\Query\Builder;
                         $room = DB::table('room')->where('qc', 'yes')->where('status', 'available')->get();
                         $number_of_room = DB::table('room')->where('qc', 'yes')->where('status', 'available')->count();
                         
@@ -107,6 +111,7 @@
                             $complain = DB::table('question')->where('type', 'complain')->count();
                             $support = DB::table('question')->where('type', 'support')->count();
                             $bug = DB::table('question')->where('type', 'bug')->count();
+                            $answer = DB::table('answer')->count();
                         ?>
                         <h1 style="text-align: center">
                            ======Thông báo======
@@ -118,6 +123,8 @@
                             - Yêu cầu hỗ trợ : {{ $support }} <a href="{{ route('adminQuestion', ['type' => 'support']) }}">Chi tiết</a>
                             <br> <br> <br>
                             - Báo lỗi : {{ $bug }} <a href="{{ route('adminQuestion', ['type' => 'bug']) }}">Chi tiết</a>
+                            <br> <br> <br>
+                            - Đơn đã được phản hồi : {{ $answer }} <a href="{{ route('adminQuestion', ['type' => 'answered']) }}">Chi tiết</a>
                     </div>  
                 </div>
             </div>

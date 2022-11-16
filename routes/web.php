@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HostController;
 use App\Http\Controllers\PageController;
+use App\Models\Room;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,12 @@ Route::middleware('user_access')->group(function () {
         return view('help');
     })->name('help');
 
+    Route::get('/notification', [PageController::class, 'notificationController']
+    )->name('notification');
+
+    Route::get('/aboutNotification/answer_id={notification_id}', [PageController::class, 'aboutNotification']
+    )->name('aboutNotification');
+
     Route::post('/help', [PageController::class, 'helpController'])->name('sendHelp');
 
     Route::middleware('host_access')->group(function () {
@@ -75,11 +82,22 @@ Route::middleware('user_access')->group(function () {
         Route::post('/aboutMotel/{motel_id}/addPicture', [HostController::class, 'processChangePictureMotel'])->name('changePictureMotel');
 
         Route::post('/aboutMotel/{motel_id}/aboutRoom/{room_id}/addPicture', [HostController::class, 'processChangePictureRoom'])->name('changePictureRoom');
+
+        Route::get('/qcRoom/motel_id={motel_id}&room_id={room_id}', [HostController::class, 'qcRoom'])->name('qcRoom');
     });
 
     Route::middleware('admin_access')->group(function () {
         Route::get('/adminQuestion/{type}', [AdminController::class, 'showQuestion']
         )->name('adminQuestion');
+
+        Route::get('/aboutQuestion/question_id={question_id}', [AdminController::class, 'aboutQuestion']
+        )->name('aboutQuestion');
+
+        Route::get('/aboutAnswer/answer_id={answer_id}', [AdminController::class, 'aboutAnswer']
+        )->name('aboutAnswer');
+
+        Route::post('/answer/username={username}&question_id={question_id}', [AdminController::class, 'sendAnswer']
+        )->name('sendAnswer');
     }); 
 });
 

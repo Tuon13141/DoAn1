@@ -104,8 +104,21 @@ class PageController extends Controller
             $price_from = 0;
             $price_to = 999999999;
         }
+
+        $room = DB::table('room')->whereBetween('price', [$price_from, $price_to])->whereBetween('area', [$area_from, $area_to]);
+
+        if($timeline_input == 'all')
+        {
+           $room->inRandomOrder();
+        }
+        else if($timeline_input == 'new') {
+            $room->orderBy('id');
+        }
+        else if($timeline_input == 'old') {
+            $room->orderByDesc('id');
+        }
         
-        $room = DB::table('room')->whereBetween('price', [$price_from, $price_to])->whereBetween('area', [$area_from, $area_to])->get();
+        $room = $room->get();
 
         if($district_input != 'all') {
             $stt = 0;
@@ -128,15 +141,7 @@ class PageController extends Controller
             }        
         }
 
-        if($timeline_input != 'all')
-        {
-            if($timeline_input == 'new') {
-                $room->sort();
-            }
-            else if($timeline_input == 'old') {
-                $room->sortDesc();
-            }
-        }
+       
 
         $room_qc = $room->where('qc', 'yes');
      
@@ -158,11 +163,25 @@ class PageController extends Controller
             'phone_number' => session('phone_number'),
             'question' => $question,
             'type' => $type,
-            'hadAnwser' => 'no',
+            'role' => session('role'),
         ]);
 
         $help->save();
 
         return back()->with('hadSend', 'Đã gửi câu hỏi');
+    }
+
+    public function notificationController () {
+        $notifications = DB::table('answer')->where('username', session('username'))->orderByDesc('id')->get();
+
+        return view('notification', ['notifications' => $notifications]);
+    }
+
+    public function aboutNotification($notification_id) {
+        $notification = DB::table('answer')->where('id', $notification_id)->where('username', session('username'))->first();
+
+        $update = DB::table('answer')->where('id', $notification_id)->where('username', session('username'))->update(['hadSeen' => 'yes']);
+
+        return view('aboutNotification', ['notification' => $notification]);
     }
 }

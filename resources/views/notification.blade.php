@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/assets/css/notification_style.css">
     <link rel="stylesheet" href="/assets/css/headerAndFooter.css">
-    <link rel="stylesheet" href="/assets/css/adminQuestion_style.css">
-    <title>Danh sách câu hỏi của người dùng</title>
+    <title>Thông báo</title>
 </head>
 <body>
     <div id="header">
@@ -47,36 +47,37 @@
     <div id="body">
         <div class="big-box">
             <div class="small-box">
-                <h1>Danh sách đơn {{ $type == 'complain' ? 'khiếu nại của người dùng' : ''}} {{ $type == 'bug' ? 'báo lỗi của người dùng' : '' }}
-                    {{ $type == 'support' ? 'yêu cầu hỗ trợ của người dùng' : '' }} {{ $type == 'answered' ? 'đã phản hồi' : '' }}</h1>
+                <h1>Danh sách thông báo</h1>
             </div>
             <div class="show-question">
                 <div class="row">
                     <ul>
                         <li class="stt">STT</li>
-                        <li class="username">Username</li>
-                        <li class="role">Chức vụ</li>
-                        <li class="created_at">{{ $type == 'answered' ? 'Ngày phản hồi' : 'Ngày hỏi' }}</li>
+                        <li class="type">Loại</li>
+                        <li class="day_ask">Ngày hỏi</li>
+                        <li class="created_at">Ngày phản hồi</li>
+                        <li class="hadSeen">Trạng thái</li>
                     </ul>
                 </div>
                     
                 <?php $stt = 1 ?>
-                @foreach ($questions as $question)
+                @foreach($notifications as $notification)
                 <div class="row">
                     <ul>
                         <div class="question-holder">
-                            <a href="{{ $type != 'answered' ? route('aboutQuestion', ['question_id' => $question->id]) : route('aboutAnswer', ['answer_id' => $question->id])}}">
+                            <a href="{{ route('aboutNotification', ['notification_id' => $notification->id]) }}">
                                 <li class="stt"><?php echo $stt ?></li>
-                                <li class="username">{{ $question->username }}</li>
-                                <li class="role">{{ $question->role }}</li>
-                                <li class="created_at">{{ $question->created_at }}</li>
+                                <li class="type">{{ $notification->type }}</li>
+                                <li class="day_ask">{{ $notification->day_ask }}</li>
+                                <li class="created_at">{{ $notification->created_at }}</li>
+                                <li class="hadSeen">{{ $notification->hadSeen == 'no' ? 'Chưa xem' : 'Đã xem'}}</li>
                             </a>
                         </div>                
                     </ul>
                     <?php $stt++ ?> 
                 </div>
-                   
-                @endforeach   
+                 @endforeach  
+                 
               
                 <div class="clear"></div>   
                 
@@ -90,5 +91,6 @@
             
         </div>
     </div>
+    
 </body>
 </html>

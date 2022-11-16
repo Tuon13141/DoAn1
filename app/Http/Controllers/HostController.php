@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Models\Motel;
 use App\Models\Room;
+use App\Models\Question;
 use Illuminate\Support\Facades\File; 
 
 class HostController extends Controller
@@ -224,5 +225,21 @@ class HostController extends Controller
         if($request->hasFile('img-3')) $request->file('img-3')->move('img/room', session('username').'_'.$motel_id.'_'.$room_id.'_'.'room_img3.jpg');
 
         return back();
+    }
+
+    public function qcRoom() {
+        
+        $help = new Question([
+            'username' => session('username'),
+            'email' => session('email'),
+            'phone_number' => session('phone_number'),
+            'question' => 'Yêu cầu quảng cáo',
+            'type' => 'qc',
+            'role' => session('role'),
+        ]);
+
+        $help->save();
+
+        return back()->with('sendQc', 'Đã gửi yêu cầu');
     }
 }

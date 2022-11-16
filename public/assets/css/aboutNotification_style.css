@@ -1,0 +1,38 @@
+#body .box {
+    float : left;
+    height: 100%;
+    width: 50%;
+    padding: 5%;
+}
+
+.box .small-box {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(136,112,87);
+    color: black;
+    padding: 5%;
+}
+
+.small-box .title {
+    height: 15%;
+    font-size: 250%;
+    font-size: 600;
+    text-align: center;
+}
+
+.small-box .content {
+    height: 80%;
+    font-size: 150%;
+    padding: 5%;
+    background-color: rgb(179, 148, 114);
+}
+
+.button {
+    float: right;
+    color: black;
+    background-color: white;
+    font-size: 150%;
+    text-decoration: none;
+    padding: 0.5% 2%;
+    margin-top: 2%;
+}

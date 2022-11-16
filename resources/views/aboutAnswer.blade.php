@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/assets/css/index_style.css">
+    <link rel="stylesheet" href="/assets/css/aboutQuestion_style.css">
     <link rel="stylesheet" href="/assets/css/headerAndFooter.css">
-    <title>Homepage</title>
+    <title>Đơn phản hồi</title>
 </head>
 <body>
     <div id="header">
@@ -46,25 +46,54 @@
 
     <div id="body">
         <div class="box">
-            <div class="small-box">
-                <img src="./assets/img/tro1.jpg" alt="">
+            <div class="small-box-1">
+                <div class="title">
+                    Thông tin người dùng
+                </div>
+                <div class="holder">
+                    <div class="circle">        
+                        <img src="{{ $user->hadAva == 'yes' ? '/img/ava/'.$user->username.'_'.'ava.jpg' : '/assets/img/ava5.jpg' }}" alt="{{ $user->username }}">
+                    </div>
+                    <div class="content">
+                        - ID: {{ $user->id }}
+                        <br>
+                        - Username: {{ $user->username }}
+                        <br>
+                        - Tên: {{ $user->name }}
+                        <br>
+                        - Chức vụ: {{ $question->role }}
+                        <br>
+                        - Số ĐT: {{ $user->phone_number }}
+                        <br>
+                        - Email: {{ $user->email }}
+                    </div>
+                </div>                
             </div>          
         </div>
         
         
         <div class="box">
-            <div class="small-box non-img">
-                <h1>WELCOME TO TRỌ XỊN</h1>
-                <p>Hỗ trợ khách hàng với 5 tiêu chí :</p>
-                <ul>
-                    <li>Phù hợp nhu cầu sử dụng.</li>
-                    <li>Đẹp.</li>
-                    <li>Giá thành tốt.</li>
-                    <li>Uy tín.</li>
-                    <li>Chất lượng.</li>
-                </ul>
-                <a href="{{  route('page1') }}" class="button">Thuê Ngay!</a>
-            </div>       
+            <div class="small-box-2">
+                <div class="title">
+                    Câu hỏi 
+                </div>
+                <div class="holder">
+                    {{ $question->question }}
+                </div>
+            </div>    
+            <div class="small-box-3">
+                <div class="title">
+                    Đơn phản hồi
+                </div>
+              
+                <div class="holder answer">
+                    <form action="">
+                        {{ $question->answer }}
+                    </form>
+                    <a href="{{ url()->previous() }}" class="back answer">Quay lại</a>
+                </div>  
+                         
+            </div>   
         </div>
     </div>
 

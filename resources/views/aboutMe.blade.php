@@ -17,7 +17,13 @@
                 <a href="{{ route('myPage') }}">Trang cá nhân</a>
             </li>
             <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
-                <a href="">Thông báo</a>
+                <?php 
+                    use Illuminate\Support\Facades\DB;
+                    use Illuminate\Database\Query\Builder;
+                    $note = DB::table('answer')->where('username', session('username'))->where('hadSeen', 'no')->count();
+                ?>              
+                <a href="{{ route('notification') }}">Thông báo</a>
+                {{ $note > 0 ? '*' : '' }}
             </li>
             <li class="child-sub {{ session()->has('role') ? '' : 'close' }}">
                 <a href="{{ route('logout') }}">Đăng xuất</a>
