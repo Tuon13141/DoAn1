@@ -227,19 +227,31 @@ class HostController extends Controller
         return back();
     }
 
-    public function qcRoom() {
+    public function qcRoom($motel_id, $room_id) {
         
+        return view('qcRoom', ['motel_id' => $motel_id, 'room_id' => $room_id]);
+    }
+
+    public function qcRoomController($motel_id, $room_id) {
+        $host_username = DB::table('room')->where('id', $room_id)->where('motel_id', $motel_id)->value('host_username');
+
+        $had_asked = DB::table('question')->where('type', 'qc')->where('username', $host_username)->where('question', $room_id)->exists();
+
+        if($had_asked) {
+            return back()->with('cantSend', 'Đã từng yêu cầu rồi');
+        }
         $help = new Question([
             'username' => session('username'),
             'email' => session('email'),
             'phone_number' => session('phone_number'),
-            'question' => 'Yêu cầu quảng cáo',
+            'question' => $room_id,
             'type' => 'qc',
             'role' => session('role'),
+            'hadAnwser' => 'no',
         ]);
 
         $help->save();
-
-        return back()->with('sendQc', 'Đã gửi yêu cầu');
+        
+        return back()->with('hadSend', 'Đã gửi yêu cầu');
     }
 }

@@ -164,6 +164,7 @@ class PageController extends Controller
             'question' => $question,
             'type' => $type,
             'role' => session('role'),
+            'hadAnwser' => 'no',
         ]);
 
         $help->save();
@@ -183,5 +184,13 @@ class PageController extends Controller
         $update = DB::table('answer')->where('id', $notification_id)->where('username', session('username'))->update(['hadSeen' => 'yes']);
 
         return view('aboutNotification', ['notification' => $notification]);
+    }
+
+    public function page1Controller() {
+        $number_room_qc = DB::table('room')->where('qc', 'yes')->count();
+        if($number_room_qc <= 0){
+            return redirect()->route('page2_randomView');
+        }
+        return view('buyPage_1');
     }
 }

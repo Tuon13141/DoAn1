@@ -84,6 +84,8 @@ Route::middleware('user_access')->group(function () {
         Route::post('/aboutMotel/{motel_id}/aboutRoom/{room_id}/addPicture', [HostController::class, 'processChangePictureRoom'])->name('changePictureRoom');
 
         Route::get('/qcRoom/motel_id={motel_id}&room_id={room_id}', [HostController::class, 'qcRoom'])->name('qcRoom');
+
+        Route::post('/qcRoom/motel_id={motel_id}&room_id={room_id}', [HostController::class, 'qcRoomController'])->name('qcRoomController');
     });
 
     Route::middleware('admin_access')->group(function () {
@@ -105,9 +107,8 @@ Route::get('/hostRegister', function () {
     return view('hostRegister');
 })->name('hostRegister');
 
-Route::get('/page1', function () {
-    return view('buyPage_1');
-})->name('page1');
+Route::get('/page1', [PageController::class, 'page1Controller']
+)->name('page1');
 
 Route::get('/page2/randomView', [PageController::class, 'randomViewController'])->name('page2_randomView');
 

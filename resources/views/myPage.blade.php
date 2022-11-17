@@ -94,15 +94,23 @@
                         $room = DB::table('room')->where('qc', 'yes')->where('status', 'available')->get();
                         $number_of_room = DB::table('room')->where('qc', 'yes')->where('status', 'available')->count();
                         
-                        $room_qc = $room[rand(0, $number_of_room - 1)];
+                        if($number_of_room > 0) {
+                            $room_qc = $room[rand(0, $number_of_room - 1)];
+                        }
+                        
                     ?>
                     <div class="title">
                         Gợi ý cho bạn: 
                     </div>
-
+                    
+                    @if($number_of_room > 0)
                     <a href="{{ route('viewRoom', ['motel_id' => $room_qc->motel_id, 'room_id' => $room_qc->id, 'host_username'=> $room_qc->host_username]) }}">
                         <img src="/img/room/{{ $room_qc->host_username }}_{{ $room_qc->motel_id }}_{{ $room_qc->id }}_motel_img1.jpg" alt="">
                     </a>
+                    
+                    @else
+                        <img src="/assets/img/tro1.jpg" alt="">
+                    @endif
                     
                 </div>
                 <div class="admin {{ session('role') == 'admin' ? '' : 'close' }}">

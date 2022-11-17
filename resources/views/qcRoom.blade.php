@@ -17,22 +17,26 @@
            
             <div class="body">
 
-                <form method="post" action="">
+                <form method="post" action="{{ route('qcRoomController', ['motel_id' => $motel_id, 'room_id' => $room_id]) }}">
                     @csrf
                     <label for="month" class="label">
-                        Hãy nhấn nút Xác nhận để được admin liên lạc tạo hợp đồng quảng cáo     
+                        Hãy nhấn nút Xác nhận để được admin liên hệ tạo hợp đồng
                     </label>
              
                     <div class="button">
                         <input type="submit" name="submit" value="Xác nhận">
-                    </div>   
+                    </div>
+                    @if(session('hadSend'))
+                        <label for="" class="label">{{session('hadSend')}}</label>
+                    @endif  
             
+                    <label for="" class="label"></label>
                     <label for="" class="label"></label>
                 </form>
             </div>
     
             <div class="footer">
-                <a href="{{ url()->previous() }}" class="btn">Quay lại</a>
+                <a href="{{ route('aboutRoom', ['motel_id' => $motel_id, 'room_id' => $room_id]) }}" class="btn">Quay lại</a>
             </div>
         </div>      
     </div>

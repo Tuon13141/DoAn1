@@ -138,7 +138,7 @@
                             
                             <input type="text" id="area" class="input" placeholder="{{ $room->area }}/m2" name="area"> 
                             
-                            <a href="" class="qc-room">
+                            <a href="{{ route('qcRoom', ['motel_id' => $motel->id, 'room_id' => $room->id]) }}" class="qc-room">
                                 <label class="label ad">
                                     Quảng cáo: {{ $room->qc == 'yes' ? 'Có' : 'Không'}}     
                                 </label>
