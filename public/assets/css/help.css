@@ -56,7 +56,10 @@
     height: 100%;
     float: left;
     border-radius: 15px;
+    color: rgb(163, 136, 99);
+    font-size: 140%;
     overflow-y: scroll;
+    padding: 2%;
 }
 #body .box2 .small-box2{
     background-color: rgb(222, 183, 125);
@@ -66,6 +69,7 @@
     margin-left: 10%;
     text-align: center;
     border-radius: 15px;
+
 }
 #body .box2 .small-box1 a{
     display: block;
@@ -122,4 +126,11 @@ form {
 
 .choice select {
     font-size: 25px;
+}
+
+.box2 .title {
+    margin-bottom: 6%;
+    text-align: center;
+    font-size: 300%;
+    color: rgb(163, 136, 99);
 }

@@ -27,10 +27,17 @@
                         <input type="submit" name="submit" value="Xác nhận">
                     </div>
                     @if(session('hadSend'))
-                        <label for="" class="label">{{session('hadSend')}}</label>
-                    @endif  
-            
-                    <label for="" class="label"></label>
+                            <label for="" class="label"></label>
+                            <p style="color: red; float: right  ">{{session('hadSend')}}</p>
+                    @else 
+                        <label for="" class="label"></label>
+                    @endif
+                    @if(session('cantSend'))
+                            <label for="" class="label"></label>
+                            <p style="color: red; float: right  ">{{session('cantSend')}}</p>
+                    @else 
+                        <label for="" class="label"></label>
+                    @endif
                     <label for="" class="label"></label>
                 </form>
             </div>

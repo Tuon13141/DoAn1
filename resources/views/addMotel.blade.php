@@ -64,6 +64,13 @@
                     <div class="button">
                         <input type="submit" name="submit" value="Thêm trọ">
                     </div>
+
+                    @if (session('addFailed'))
+                    <label for="" class="label"></label>
+                    <p style="color: red">
+                        {{ session('addFailed') }}  
+                    </p>
+                    @endif
                 </form>
                 
             </div>

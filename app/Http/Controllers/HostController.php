@@ -16,7 +16,7 @@ class HostController extends Controller
 {
     public function processAddMotel(Request $request) {
         if($request->input('district') == '' || $request->input('address') == '' || $request->input('describe') == '') {
-            return back();
+            return back()->with('addFailed', 'Không được để trống thành phần nào');
         }
 
         $motel = new Motel([
@@ -36,7 +36,7 @@ class HostController extends Controller
         if(!$request->hasFile('img-1') || !$request->hasFile('img-2') || !$request->hasFile('img-3'))
         {
             
-            return back();
+            return back()->with('addFailed', 'Không được để trống thành phần nào');
         }
 
        
@@ -98,7 +98,7 @@ class HostController extends Controller
 
         $addressExists = DB::table('motel')->where('address', $request->input('address'))->exists();
         if ($addressExists){
-            return back();
+            return back()->with('existed', 'Đã tồn tại địa chỉ này');
         }
         
         $update = DB::table('motel')->where('host_username', session('username'))->where('id', $motel_id)
@@ -179,12 +179,12 @@ class HostController extends Controller
         $hadNumber = $request->input('number') == '';
 
         if($hadArea || $hadPrice || $hadNumber) {
-            return back();
+            return back()->with('addFailed', 'Không được để trống thành phần nào');
         }
 
         if(!$request->hasFile('img-1') || !$request->hasFile('img-2') || !$request->hasFile('img-3'))
         {
-            return back();
+            return back()->with('addFailed', 'Không được để trống thành phần nào');
         }
 
         $room = new Room([
@@ -228,7 +228,13 @@ class HostController extends Controller
     }
 
     public function qcRoom($motel_id, $room_id) {
-        
+        $room_qc = DB::table('room')->where('id', $room_id)->where('motel_id', $motel_id)->value('qc');
+
+        if($room_qc == 'yes')
+        {
+            return back()->with('had_qc', 'Phòng trọ đang được quảng cáo');
+        }
+
         return view('qcRoom', ['motel_id' => $motel_id, 'room_id' => $room_id]);
     }
 

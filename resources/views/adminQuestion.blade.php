@@ -48,7 +48,7 @@
         <div class="big-box">
             <div class="small-box">
                 <h1>Danh sách đơn {{ $type == 'complain' ? 'khiếu nại của người dùng' : ''}} {{ $type == 'bug' ? 'báo lỗi của người dùng' : '' }}
-                    {{ $type == 'support' ? 'yêu cầu hỗ trợ của người dùng' : '' }} {{ $type == 'answered' ? 'đã phản hồi' : '' }}</h1>
+                    {{ $type == 'support' ? 'yêu cầu hỗ trợ của người dùng' : '' }} {{ $type == 'answered' ? 'đã phản hồi' : '' }} {{  $type == 'qc' ? 'đợi xác minh quảng cáo' : '' }}</h1>
             </div>
             <div class="show-question">
                 <div class="row">
@@ -65,12 +65,31 @@
                 <div class="row">
                     <ul>
                         <div class="question-holder">
-                            <a href="{{ $type != 'answered' ? route('aboutQuestion', ['question_id' => $question->id]) : route('aboutAnswer', ['answer_id' => $question->id])}}">
+                            @if ($type == 'qc')
+                            <a href="{{ route('confirmQc', ['answer_id' => $question->id]) }}">
                                 <li class="stt"><?php echo $stt ?></li>
                                 <li class="username">{{ $question->username }}</li>
                                 <li class="role">{{ $question->role }}</li>
                                 <li class="created_at">{{ $question->created_at }}</li>
                             </a>
+    
+                            @else
+                                @if ($type == 'qc_confirm')
+                                <a href="{{route('aboutQcRoom', ['answer_id' => $question->id])}}">
+                                    <li class="stt"><?php echo $stt ?></li>
+                                    <li class="username">{{ $question->username }}</li>
+                                    <li class="role">{{ $question->role }}</li>
+                                    <li class="created_at">{{ $question->created_at }}</li>
+                                </a>
+                                @else
+                                <a href="{{ $type != 'answered' && $type != 'qc_confirm' ? route('aboutQuestion', ['question_id' => $question->id]) : route('aboutAnswer', ['answer_id' => $question->id])}}">
+                                    <li class="stt"><?php echo $stt ?></li>
+                                    <li class="username">{{ $question->username }}</li>
+                                    <li class="role">{{ $question->role }}</li>
+                                    <li class="created_at">{{ $question->created_at }}</li>
+                                </a>
+                                @endif                 
+                            @endif
                         </div>                
                     </ul>
                     <?php $stt++ ?> 

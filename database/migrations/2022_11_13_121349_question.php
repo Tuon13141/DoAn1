@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('created_at');
             $table->text('updated_at');
             $table->string('role',20);
+            $table->string('hadAnwser', 20);
         });
     }
 

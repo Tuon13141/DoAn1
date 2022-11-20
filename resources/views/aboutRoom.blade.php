@@ -143,6 +143,9 @@
                                     Quảng cáo: {{ $room->qc == 'yes' ? 'Có' : 'Không'}}     
                                 </label>
                             </a>
+                            @if (session('had_qc'))
+                                <p style="text-align: center">{{ session('had_qc') }}</p>
+                            @endif
                            
     
                             <div class="clear"></div>

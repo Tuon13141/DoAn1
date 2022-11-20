@@ -45,25 +45,25 @@
     </div>
     <div id="body">
         <div class="box1">
-            <h3>Tìm câu hỏi đã có sẵn</h3>
-            <input type="text" name="">
-            <a href="">Tìm kiếm</a>
+            <h3>Hãy đặt câu hỏi cho chúng tôi !</h3>
         </div>
         <div class="box2">
             <div class="small-box1">
-                <a href="">Tôi không biết cách thông đít thằng quang?</a>
-                <a href="">Tôi không biết cách nạp tiền?</a>
-                <a href="">Cách đánh tài xỉu?   </a>
-                <a href="">Cách nạp tiền vào Nhà Cái đến từ Châu Âu</a>
-                <a href="">Tôi không biết cách uống trà đá?</a>
-                <a href="">Tôi không biết cách nạp tiền?</a>
-                <a href="">Tôi không biết cách gia hạn?</a>
-                <a href="">Tôi không biết cách lừa sinh viên?</a>
-                <a href="">Tôi không biết cách uống trà đá?</a>
-                <a href="">Tôi không biết cách nạp tiền?</a>
-                <a href="">Tôi không biết cách gia hạn?</a>
-                <a href="">Tôi không biết cách lừa sinh viên?</a>
-                <a href="">Tôi không biết cách uống trà đá?</a>
+                <div class="title">
+                    Về chúng tôi
+                </div>
+                Được thực hiện bởi nhóm đồ án 2 gồm 5 người:
+                <br>
+                - Trưởng nhóm : Nguyễn Đình Quang Tuấn
+                <br>
+                - Tạ Quang Phúc
+                <br>
+                - Nguyễn Đình Thế
+                <br>
+                - Vũ Hoàng Long
+                <br>
+                - Nguyễn Hồng Quang
+
             </div>
             <div class="small-box2">
                 <h3>Đặt câu hỏi tại đây</h3>

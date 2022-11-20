@@ -187,7 +187,8 @@ class PageController extends Controller
     }
 
     public function page1Controller() {
-        $number_room_qc = DB::table('room')->where('qc', 'yes')->count();
+        $number_room_qc = DB::table('room')->where('qc', 'yes')->where('status', 'available')->count();
+
         if($number_room_qc <= 0){
             return redirect()->route('page2_randomView');
         }

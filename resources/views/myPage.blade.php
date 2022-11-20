@@ -119,20 +119,39 @@
                             $complain = DB::table('question')->where('type', 'complain')->count();
                             $support = DB::table('question')->where('type', 'support')->count();
                             $bug = DB::table('question')->where('type', 'bug')->count();
-                            $answer = DB::table('answer')->count();
+                            $answers = DB::table('answer')->get();
+                            $answer = 0;
+                            $qc_unconfirm = 0;
+                            foreach ($answers as $child) {
+                                if($child->type != 'qc') {
+                                    $answer++;
+                                }
+                                else {
+                                    $qc_unconfirm++;
+                                }
+                            }
+                            
+                            $need_qc = DB::table('question')->where('type', 'qc')->count();
+
+                            $qc = DB::table('room')->where('qc', 'yes')->count();
                         ?>
                         <h1 style="text-align: center">
                            ======Thông báo======
-                        </h1> <br> <br> <br> <br> <br>
-                            - Phòng trọ xin cấp quảng cáo : 3 <a href="">Chi tiết</a>
-                            <br> <br> <br>
+                        </h1> <br> <br> 
+                            - Phòng trọ xin cấp quảng cáo : {{ $need_qc }} <a href="{{ route('adminQuestion', ['type' => 'need_qc']) }}">Chi tiết</a>
+                            <br> <br> <br>  
                             - Đơn khiếu nại : {{ $complain }} <a href="{{ route('adminQuestion', ['type' => 'complain']) }}">Chi tiết</a>
-                            <br> <br> <br>
+                            <br> <br> <br> 
                             - Yêu cầu hỗ trợ : {{ $support }} <a href="{{ route('adminQuestion', ['type' => 'support']) }}">Chi tiết</a>
-                            <br> <br> <br>
+                            <br> <br> <br> 
                             - Báo lỗi : {{ $bug }} <a href="{{ route('adminQuestion', ['type' => 'bug']) }}">Chi tiết</a>
-                            <br> <br> <br>
+                            <br> <br> <br> 
                             - Đơn đã được phản hồi : {{ $answer }} <a href="{{ route('adminQuestion', ['type' => 'answered']) }}">Chi tiết</a>
+                            <br> <br> <br> 
+                            - Phòng trọ đợi được xác nhận : {{ $qc_unconfirm }} <a href="{{ route('adminQuestion', ['type' => 'qc']) }}">Chi tiết</a>
+                            <br> <br> <br> 
+                            - Phòng trọ đang được quảng cáo : {{ $qc }} <a href="{{ route('adminQuestion', ['type' => 'qc_confirm']) }}">Chi tiết</a>
+
                     </div>  
                 </div>
             </div>

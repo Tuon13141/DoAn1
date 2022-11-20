@@ -56,16 +56,31 @@
             <p id="nextBtn1">></p> 
             <div class="slider1">
                 <div class="box1" id="lastClone1">
-                    <img src="/img/room/{{ $room_qc[$room_qc->count() - 1]->host_username }}_{{ $room_qc[$room_qc->count() - 1]->motel_id }}_{{ $room_qc[$room_qc->count() - 1]->id }}_motel_img1.jpg" alt="">
+                    <a href="{{ route('viewRoom', ['motel_id' => $room_qc[$room_qc->count() - 1]->motel_id
+                                    , 'room_id' => $room_qc[$room_qc->count() - 1]->id
+                                    , 'host_username' => $room_qc[$room_qc->count() - 1]->host_username]) }}">
+                        <img src="/img/room/{{ $room_qc[$room_qc->count() - 1]->host_username }}_{{ $room_qc[$room_qc->count() - 1]->motel_id }}_{{ $room_qc[$room_qc->count() - 1]->id }}_motel_img1.jpg" alt="">
+                    </a>
+                    
                 </div>
                 @while ($stt < $room_qc->count()) 
                     <div class="box1">
-                        <img src="/img/room/{{ $room_qc[$stt]->host_username }}_{{ $room_qc[$stt]->motel_id }}_{{ $room_qc[$stt]->id }}_motel_img1.jpg" alt="">
+                        <a href="{{ route('viewRoom', ['motel_id' => $room_qc[$stt]->motel_id
+                            , 'room_id' => $room_qc[$stt]->id
+                            , 'host_username' => $room_qc[$stt]->host_username]) }}">
+                            <img src="/img/room/{{ $room_qc[$stt]->host_username }}_{{ $room_qc[$stt]->motel_id }}_{{ $room_qc[$stt]->id }}_motel_img1.jpg" alt="">
+                        </a>
+                       
                     </div>
                     <?php $stt++; ?>
                 @endwhile
                 <div class="box1" id="firstClone1">
-                    <img src="/img/room/{{ $room_qc[0]->host_username }}_{{ $room_qc[0]->motel_id }}_{{ $room_qc[0]->id }}_motel_img1.jpg" alt="">
+                    <a href="{{ route('viewRoom', ['motel_id' => $room_qc[0]->motel_id
+                        , 'room_id' => $room_qc[0]->id
+                        , 'host_username' => $room_qc[0]->host_username]) }}">
+                        <img src="/img/room/{{ $room_qc[0]->host_username }}_{{ $room_qc[0]->motel_id }}_{{ $room_qc[0]->id }}_motel_img1.jpg" alt="">
+                    </a>
+                    
                 </div>
                 
             </div>   

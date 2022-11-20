@@ -85,16 +85,16 @@
                             Trạng thái: {{ $room->status == 'available' ? 'Còn trống' : 'Đã được thuê' }}     
                         </label>
 
-                        <label for="number" class="label">
-                            Phòng số: {{ $room->number }} 
-                        </label>
-                        
                         <label for="price" class="label">
                             Giá tiền: {{ $room->price }}/tháng
                         </label>
         
                         <label for="area" class="label">
                             Diện tích: {{ $room->area }}m2
+                        </label>
+
+                        <label for="address" class="label">
+                            Địa chỉ: {{ $motel->address }}
                         </label>
 
                         <div class="clear"></div>

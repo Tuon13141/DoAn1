@@ -98,8 +98,20 @@ Route::middleware('user_access')->group(function () {
         Route::get('/aboutAnswer/answer_id={answer_id}', [AdminController::class, 'aboutAnswer']
         )->name('aboutAnswer');
 
+        Route::get('/aboutQcRoom/answer_id={answer_id}', [AdminController::class, 'aboutQcRoom']
+        )->name('aboutQcRoom');
+
         Route::post('/answer/username={username}&question_id={question_id}', [AdminController::class, 'sendAnswer']
         )->name('sendAnswer');
+
+        Route::get('/confirmQc/answer_id={answer_id}', [AdminController::class, 'confirmQc']
+        )->name('confirmQc');
+
+        Route::post('/confirmQc/host_username={username}&room_id={room_id}&answer_id={answer_id}', [AdminController::class, 'processConfirmQc']
+        )->name('processConfirmQc');
+
+        Route::post('/cancelQc/host_username={username}&room_id={room_id}&answer_id={answer_id}', [AdminController::class, 'cancelQc']
+        )->name('cancelQc');
     }); 
 });
 
